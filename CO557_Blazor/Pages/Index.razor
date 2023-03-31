@@ -1,0 +1,371 @@
+﻿@using CO557_Blazor.Pages.Models
+@page "/"
+
+<PageTitle>Index</PageTitle>
+
+<h1 style="text-align: center">Bucks New University</h1>
+
+<h2 style="text-align: center">Data Science</h2>
+
+<h2 style="text-align: center">Ethan Dias-Richards</h2>
+
+<h2 style="text-align: center">Software Engineering (CO557)</h2>
+
+<p style="text-align: center; font-size:28px">Element 3 Prototype</p>
+
+<h3>FASAM System</h3>
+
+<PageTitle>FASAM</PageTitle>
+<style>
+	table, th, td {
+		border: 2px solid black;
+	}
+</style>
+
+<div class="card w-50" style="display:inline-block">
+	<div class="card-body" style="display:inline-block">
+		<p>Zone 1</p>
+		<button @onclick="()=>ActivateSSZoneOne()">Turn On Sprinkler System</button>
+		<button @onclick="()=>LockDoorsZoneOne()">Lock Doors</button>
+		<button @onclick="()=>ActivateAlarmZoneOne()">Activate Fire Alarm</button>
+	</div>
+</div>
+<br />
+<div class="card w-50" style="display:inline-block">
+	<div class="card-body" style="display:inline-block">
+		<p>Zone 2</p>
+		<button @onclick="()=>ActivateSSZoneTwo()">Turn On Sprinkler System</button>
+		<button @onclick="()=>LockDoorsZoneTwo()">Lock Doors</button>
+		<button @onclick="()=>ActivateAlarmZoneTwo()">Activate Fire Alarm</button>
+	</div>
+</div>
+<br />
+<div class="card w-50" style="display:inline-block">
+	<div class="card-body" style="display:inline-block">
+		<p>Zone 3</p>
+		<button @onclick="()=>ActivateSSZoneThree()">Turn On Sprinkler System</button>
+		<button @onclick="()=>LockDoorsZoneThree()">Lock Doors</button>
+		<button @onclick="()=>ActivateAlarmZoneThree()">Activate Fire Alarm</button>
+	</div>
+</div>
+<br />
+<div class="card w-50" style="display:inline-block">
+	<div class="card-body" style="display:inline-block">
+		<p>Zone 4</p>
+		<button @onclick="()=>ActivateSSZoneFour()">Turn On Sprinkler System</button>
+		<button @onclick="()=>LockDoorsZoneFour()">Lock Doors</button>
+		<button @onclick="()=>ActivateAlarmZoneFour()">Activate Fire Alarm</button>
+	</div>
+</div>
+<br />
+@*<tr style="border-collapse: collapse">
+<td>Zone 1</td>
+<td><button @onclick="()=>ActivateSSZoneOne()">Turn On Sprinkler System</button></td>
+<td><button @onclick="()=>LockDoorsZoneOne()">Lock Doors</button></td>
+<td><button @onclick="()=>ActivateAlarmZoneOne()">Activate Fire Alarm</button></td>
+</tr>
+<tr>
+<td>Zone 2</td>
+<td><button @onclick="()=>ActivateSSZoneTwo()">Turn On Sprinkler System</button></td>
+<td><button @onclick="()=>LockDoorsZoneTwo()">Lock Doors</button></td>
+<td><button @onclick="()=>ActivateAlarmZoneTwo()">Activate Fire Alarm</button></td>
+</tr>
+<tr>
+<td>Zone 3</td>
+<td><button @onclick="()=>ActivateSSZoneThree()">Turn On Sprinkler System</button></td>
+<td><button @onclick="()=>LockDoorsZoneThree()">Lock Doors</button></td>
+<td><button @onclick="()=>ActivateAlarmZoneThree()">Activate Fire Alarm</button></td>
+</tr>
+<tr>
+<td>Zone 4</td>
+<td><button @onclick="()=>ActivateSSZoneFour()">Turn On Sprinkler System</button></td>
+<td><button @onclick="()=>LockDoorsZoneFour()">Lock Doors</button></td>
+<td><button @onclick="()=>ActivateAlarmZoneFour()">Activate Fire Alarm</button></td>
+</tr>*@
+
+<br />
+
+<table>
+	<tr>
+		<td style="width:81px"></td>
+		<td style="text-align:center; width:228px; font-weight:bold">Sprinkler Systems</td>
+		<td style="text-align:center; width:228px; font-weight:bold">Doors</td>
+		<td style="text-align:center; width:228px; font-weight:bold">Fire Alarm</td>
+	</tr>
+	<tr>
+		<td style="text-align:center; font-weight:bold">Zone 1</td>
+		<td style="width:81px; text-align:center">@SS1</td>
+		<td style="width:81px; text-align:center">@D1</td>
+		<td style="width:81px; text-align:center">@A1</td>
+	</tr>
+	<tr>
+		<td style="text-align:center; font-weight:bold">Zone 2</td>
+		<td style="width:81px; text-align:center">@SS2</td>
+		<td style="width:81px; text-align:center">@D2</td>
+		<td style="width:81px; text-align:center">@A2</td>
+	</tr>
+	<tr>
+		<td style="text-align:center; font-weight:bold">Zone 3</td>
+		<td style="width:81px; text-align:center">@SS3</td>
+		<td style="width:81px; text-align:center">@D3</td>
+		<td style="width:81px; text-align:center">@A3</td>
+	</tr>
+	<tr>
+		<td style="text-align:center; font-weight:bold">Zone 4</td>
+		<td style="width:81px; text-align:center">@SS4</td>
+		<td style="width:81px; text-align:center">@D4</td>
+		<td style="width:81px; text-align:center">@A4</td>
+	</tr>
+</table>
+<br />
+<button style="display:inline-block" @onclick="()=>ContactES()">Contact Emergency Services</button>
+<p style="display:inline-block">Emergency Services: @ES</p>
+@*<th>People inside</th>
+<td>@FASAM.PeopleInside</td>
+<th>Sprinkler Systems</th>
+<td>@FASAM.SprinklerSystem</td>
+<th>Locked doors</th>
+<td>@FASAM.DoorsLocked</td>
+<th>Emergency Serivices contacted</th>
+<td>@FASAM.EmergencySerivces</td>*@
+
+<br />
+
+<br />
+
+<h2>Zone 1</h2>
+
+<button @onclick="()=> LockDoorsZoneOne()">Lock Doors</button>
+<p style="font-size:21px">Doors Locked: @D1</p>
+
+
+<button @onclick="()=> ActivateSSZoneOne()">Activate Sprinkler Systems</button>
+<p style="font-size:21px">Sprinkler Systems: @SS1</p>
+
+<button @onclick="()=> ActivateAlarmZoneOne()">Activate Fire Alarm</button>
+<p style="font-size:21px">Alarm: @A1</p>
+
+<h2>Zone 2</h2>
+
+<button @onclick="()=> LockDoorsZoneTwo()">Lock Doors</button>
+<p style="font-size:21px">Doors Locked: @D2</p>
+
+
+<button @onclick="()=> ActivateSSZoneTwo()">Activate Sprinkler Systems</button>
+<p style="font-size:21px">Sprinkler Systems: @SS2</p>
+
+<button @onclick="()=> ActivateAlarmZoneTwo()">Activate Fire Alarm</button>
+<p style="font-size:21px">Alarm: @A2</p>
+
+<h2>Zone 3</h2>
+
+<button @onclick="()=> LockDoorsZoneThree()">Lock Doors</button>
+<p style="font-size:21px">Doors Locked: @D3</p>
+
+
+<button @onclick="()=> ActivateSSZoneThree()">Activate Sprinkler Systems</button>
+<p style="font-size:21px">Sprinkler Systems: @SS3</p>
+
+<button @onclick="()=> ActivateAlarmZoneThree()">Activate Fire Alarm</button>
+<p style="font-size:21px">Alarm: @A3</p>
+
+<h2>Zone 4</h2>
+
+<button @onclick="()=> LockDoorsZoneFour()">Lock Doors</button>
+<p style="font-size:21px">Doors Locked: @D4</p>
+
+
+<button @onclick="()=> ActivateSSZoneFour()">Activate Sprinkler Systems</button>
+<p style="font-size:21px">Sprinkler Systems: @SS4</p>
+
+<button @onclick="()=> ActivateAlarmZoneFour()">Activate Fire Alarm</button>
+<p style="font-size:21px">Alarm: @A4</p>
+
+@code {
+
+	FASAM Z1 = new FASAM();
+
+	string A1 = "Off";
+
+	string A2 = "Off";
+
+	string A3 = "Off";
+
+	string A4 = "Off";
+
+	string SS1 = "Off";
+
+	string SS2 = "Off";
+
+	string SS3 = "Off";
+
+	string SS4 = "Off";
+
+	string D1 = "Unlocked";
+
+	string D2 = "Unlocked";
+
+	string D3 = "Unlocked";
+
+	string D4 = "Unlocked";
+
+	string ES = "Not contacted";
+
+	void Run()
+	{
+		D1 = "Unlocked";
+	}
+
+	void LockDoorsZoneOne()
+	{
+		if (D1 == "Unlocked")
+		{
+			D1 = "Locked";
+		}
+		else if (D1 == "Locked")
+		{
+			D1 = "Unlocked";
+		}
+	}
+
+	void LockDoorsZoneTwo()
+	{
+		if (D2 == "Unlocked")
+		{
+			D2 = "Locked";
+		}
+		else if (D2 == "Locked")
+		{
+			D2 = "Unlocked";
+		}
+	}
+
+	void LockDoorsZoneThree()
+	{
+		if (D3 == "Unlocked")
+		{
+			D3 = "Locked";
+		}
+		else if (D3 == "Locked")
+		{
+			D3 = "Unlocked";
+		}
+	}
+
+	void LockDoorsZoneFour()
+	{
+		if (D4 == "Unlocked")
+		{
+			D4 = "Locked";
+		}
+		else if (D4 == "Locked")
+		{
+			D4 = "Unlocked";
+		}
+	}
+
+	void ActivateAlarmZoneOne()
+	{
+		if (A1 == "Off")
+		{
+			A1 = "On";
+		}
+		else if (A1 == "On")
+		{
+			A1 = "Off";
+		}
+	}
+
+	void ActivateAlarmZoneTwo()
+	{
+		if (A2 == "Off")
+		{
+			A2 = "On";
+		}
+		else if (A2 == "On")
+		{
+			A2 = "Off";
+		}
+	}
+
+	void ActivateAlarmZoneThree()
+	{
+		if (A3 == "Off")
+		{
+			A3 = "On";
+		}
+		else if (A3 == "On")
+		{
+			A3 = "Off";
+		}
+	}
+
+	void ActivateAlarmZoneFour()
+	{
+		if (A4 == "Off")
+		{
+			A4 = "On";
+		}
+		else if (A4 == "On")
+		{
+			A4 = "Off";
+		}
+	}
+
+	void ActivateSSZoneOne()
+	{
+		if (SS1 == "Off")
+		{
+			SS1 = "On";
+		}
+		else if (SS1 == "On")
+		{
+			SS1 = "Off";
+		}
+	}
+
+	void ActivateSSZoneTwo()
+	{
+		if (SS2 == "Off")
+		{
+			SS2 = "On";
+		}
+		else if (SS2 == "On")
+		{
+			SS2 = "Off";
+		}
+	}
+
+	void ActivateSSZoneThree()
+	{
+		if (SS3 == "Off")
+		{
+			SS3 = "On";
+		}
+		else if (SS3 == "On")
+		{
+			SS3 = "Off";
+		}
+	}
+
+	void ActivateSSZoneFour()
+	{
+		if (SS4 == "Off")
+		{
+			SS4 = "On";
+		}
+		else if (SS4 == "On")
+		{
+			SS4 = "Off";
+		}
+	}
+
+	void ContactES()
+	{
+		ES = "Contacted";
+	}
+
+}
+
+
+
